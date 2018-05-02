@@ -10,7 +10,7 @@ const NSCrawler = require('../lib/crawler/crawler').NSCrawler;
 
 describe('#Load Configuration', function() {
   let config = new NSCrawlerConfig();
-  config.loadDefault();
+  config.loadConfig();
 
   it('clickTypes should have value', function() {
     assert.ok(config.clickTypes.length, 'clickTypes should have value');
@@ -31,7 +31,7 @@ describe('#Load Configuration', function() {
 
 describe('#Check Regex', function() {
   let config = new NSCrawlerConfig();
-  config.loadDefault();
+  config.loadConfig();
   let crawler = new NSCrawler(config, 'mock session');
   it('Regex Check', function() {
     assert.ok(crawler.checkContentMatch(regexMock, 'android\\s+bootstrap', true), 'when appears');

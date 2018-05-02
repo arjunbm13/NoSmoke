@@ -39,25 +39,9 @@ program
 
 program.parse(process.argv);
 
-var printInfo = function(lines) {
-  var maxLength = 0;
-  lines.forEach(line => {
-    maxLength = line.length > maxLength ? line.length : maxLength;
-  });
-
-  var res = [new Array(maxLength + 7).join('*')];
-
-  lines.forEach(line => {
-    res.push(`*  ${line + new Array(maxLength - line.length + 1).join(' ')}  *`);
-  });
-
-  res.push(new Array(maxLength + 7).join('*'));
-  console.log(chalk.white(`${EOL}${res.join(EOL)}${EOL}`));
-};
-
 function init(error, data) {
   if (data && data.version && pkg.version !== data.version) {
-    printInfo([`version ${pkg.version} is outdate`, `run: npm i -g ${pkg.name}@${data.version}`]);
+    console.log(`version ${pkg.version} is outdate`, `run: npm i -g ${pkg.name}@${data.version}`);
     return;
   }
 
